@@ -1,0 +1,200 @@
+// ------------------------------------------------------------------
+//   Responsive breakpoints
+//
+//   $media variable: tablet-small, tablet-port, tablet-land, wide-screen
+//
+//   Syntax:
+//   @include mq(tablet-small) {
+//     Add your styles
+//   }
+// ------------------------------------------------------------------
+
+@mixin mq($media) {
+
+  // Old IE support is off, output rules inside @media queries
+  @if not $old-ie {
+    @each $break-point in $mq-break-points {
+      $break-point-name:  nth($break-point, 1);
+      $break-point-width: nth($break-point, 2);
+
+      @if $media == $break-point-name {
+        @media only screen and (min-width: $break-point-width) { @content; }
+      }
+    }
+  }
+
+  // If old IE support is on, output static width
+  @if $old-ie {
+
+    $min-width:    mq-retrieve-breakpoint-width($media);
+    $old-ie-width: mq-retrieve-breakpoint-width($old-ie-break-point);
+
+    @if $min-width <= $old-ie-width { @content; }
+
+  }
+}
+
+
+// ------------------------------------------------------------------
+//   Old IE only styles
+//   Only use this content if dealing with old IE
+//
+//   Syntax:
+//   .list {
+//     @include old-ie {
+//       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+//     }
+//   }
+// ------------------------------------------------------------------
+
+@mixin old-ie {
+  @if $old-ie {
+    @content;
+  }
+}
+
+
+// ------------------------------------------------------------------
+//   Retrieve breakpoint width based on name
+// ------------------------------------------------------------------
+
+@function mq-retrieve-breakpoint-width($name) {
+  @each $break-point in $mq-break-points {
+    $break-point-name:  nth($break-point, 1);
+    $break-point-width: nth($break-point, 2);
+
+    @if $name == $break-point-name {
+      @return $break-point-width;
+    }
+  }
+  @return 'Break point #{$name} does not exist';
+}
+
+
+// ------------------------------------------------------------------
+//   Turns off the bullets for an entire list and remove the margin bottom
+//
+//   Syntax:
+//   .list {
+//     @include no-bullets;
+//   }
+// ------------------------------------------------------------------
+
+@mixin no-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px;
+  }
+}
+
+
+// ------------------------------------------------------------------
+//   Rem font sizing with px fallback
+//
+//   Syntax:
+//   h1 {
+//     @include font-size(36px);
+//   }
+// ------------------------------------------------------------------
+
+@mixin font-size($font-size: $base-font-size) {
+  font-size: #{$font-size}; // fallback for old broswers
+  font-size: #{$font-size / $base-font-size}rem;
+}
+
+
+// ------------------------------------------------------------------
+//   Hide text
+//
+//   Syntax:
+//   .logo {
+//     background: url("logo.png");
+//     @include hide-text;
+//   }
+// ------------------------------------------------------------------
+
+@mixin hide-text() {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+// ------------------------------------------------------------------
+//   Rem
+//
+//   Syntax:
+//   h1 {
+//     @include rem(font-size, 14px);
+//     @include rem(margin, 20px);
+//   }
+// ------------------------------------------------------------------
+
+@mixin rem($property, $values) {
+  $font-size: $base-font-size;
+  $px-values: ();
+  $rem-values: ();
+
+  // Loop through the $values list
+  @each $value in $values {
+    // For each property value, if it's in rem or px, derive both rem and
+    // px values for it and add those to the end of the appropriate buffer.
+    // Ensure all pixel values are rounded to the nearest pixel.
+    @if $value == 0 or $value == 0px {
+      // 0 -- use it without a unit
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      // px value given - calculate rem value from font-size
+      $new-rem-value: $value / $font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == "%") {
+      // % value given - don't add px or rem
+      $px-values: join($px-values, #{$value});
+      $rem-values: join($rem-values, #{$value});
+    } @else if $value == auto {
+      // auto - don't add px or rem
+      $px-values: join($px-values, auto);
+      $rem-values: join($rem-values, auto);
+    } @else {
+      // unitless value - use those directly as rem and calculate the px-fallback
+      $px-values: join($px-values, round($value * $font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    }
+  }
+
+  // output the converted rules
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
+
+// Animations
+@mixin animation {
+  transition: color $duration;
+}
+
+// mixin for placeholders
+@mixin placeholder {
+  color: tint($base-colour, 50%);
+  @include animation;
+}
+
+// Line
+@mixin line($rev: no) {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  transition: $duration;
+
+  @if $rev == no {
+    background: #222;
+  } @else {
+    background: #fff;
+  }
+}

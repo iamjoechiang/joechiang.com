@@ -1,0 +1,39 @@
+// Meida query - break points
+// -------------------------
+
+// Small tablet - 600px
+// Tablet portrait (e.g. Apple iPad, mini) - 768px
+// Tablet landscape (e.g. Apple iPad, mini) - 1024px
+// Wide screen - 1200px
+
+$mq-break-points: (
+  (tablet-small 600px)
+  (tablet-port  768px)
+  (tablet-land  960px)
+  (wide-screen  1200px)
+) !default;
+
+$old-ie:                false !default; // Old IE is disabled as default
+$old-ie-break-point:    wide-screen; // Set wide screen width for old IEs break point
+
+$base-colour: #464646;
+$bg-colour: #d3d3d1;
+
+$base-font:   'adobe-garamond-pro', serif;
+$header-font: 'brandon-grotesque', sans-serif;
+$code-font:   'source-code-pro', sans-serif;
+
+$base-font-size: 18px;
+
+$link-colour: $base-colour;
+$link-hover-colour: $base-colour;
+
+$duration: .3s;
+
+$grey-lighter: #ededed;
+$grey-light: #ccc;
+$grey: #666;
+$grey-dark: #222;
+
+$border-width: 20px;
+$border-colour: #ddd;

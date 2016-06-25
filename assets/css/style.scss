@@ -1,0 +1,1102 @@
+// Character encoding
+@charset "UTF-8";
+
+// Import variable
+@import "variable";
+
+// Import mixin
+@import "mixin";
+
+// Import function
+@import "function";
+
+
+// ------------------------------------------------------------------
+// Default
+// ------------------------------------------------------------------
+
+// Web font loader
+.wf-loading * {
+  visibility: hidden;
+}
+
+.wf-active *,
+.wf-inactive * {
+  visibility: visible;
+  transition: visibility $duration ease-out;
+}
+
+* {
+  box-sizing: border-box;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  color: $base-colour;
+  line-height: 1.6;
+  font-family: $base-font;
+  font-size: $base-font-size;
+  font-style: normal;
+  font-weight: 400;
+
+  @include mq(tablet-land) {
+    @include font-size(24px);
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Layout
+// ------------------------------------------------------------------
+
+.container {
+  @extend .cf;
+
+  @include rem(padding, 20px);
+  @include mq(tablet-land) {
+    max-width: 80%;
+    margin: 0 auto;
+
+    main,
+    footer {
+      margin-left: auto;
+      margin-right: auto;
+
+      @include rem(width, 700px);
+    }
+  }
+
+  @include mq(wide-screen) {
+    max-width: 1140px;
+  }
+
+}
+
+
+// ------------------------------------------------------------------
+// Typography
+// ------------------------------------------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $header-font;
+  font-style: normal;
+  font-weight: 700;
+  text-align: left;
+  text-transform: capitalize;
+
+  @include rem(margin, 60px 0 0 0);
+  @include mq(tablet-land) {
+    text-align: left;
+  }
+}
+
+h1,
+.h1 {
+  line-height: 1.1875;
+  text-align: center;
+
+  @include font-size(45px);
+  @include rem(margin-bottom, 20px);
+  @include mq(tablet-land) {
+    @include font-size(80px);
+  }
+}
+
+h2,
+.h2 {
+  line-height: 1.1875;
+
+  @include font-size(34px);
+  @include rem(margin-bottom, 20px);
+  @include mq(tablet-land) {
+    @include font-size(50px);
+    @include rem(margin-bottom, 40px);
+  }
+}
+
+h3,
+.h3 {
+  line-height: 1.1875;
+
+  @include font-size(25px);
+  @include rem(margin-bottom, 20px);
+  @include mq(tablet-land) {
+    @include font-size(40px);
+    @include rem(margin-bottom, 40px);
+  }
+}
+
+h4,
+.h4 {
+  line-height: 1.1875;
+
+  @include font-size(25px);
+  @include rem(margin-bottom, 20px);
+  @include mq(tablet-land) {
+    @include font-size(31px);
+    @include rem(margin-bottom, 40px);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+dt {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+dd {
+  padding: 0;
+
+  @include rem(margin, 0 0 10px 0);
+}
+
+// Site title
+.site-title {
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 0;
+
+  &:after {
+    display: block;
+    width: 70px;
+    height: 5px;
+    background: #afafaf;
+    content: '';
+
+    @include rem(margin, 20px auto);
+  }
+}
+
+.centre {
+  text-align: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+figure {
+  margin: 0 1px 1px 0;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  background: shade(#fff, 3);
+  border-bottom: 1px solid $border-colour;
+
+  @include rem(padding, 10px);
+  @include mq(tablet-land) {
+    @include font-size(16px);
+  }
+}
+
+hr {
+  background: $border-colour;
+  border : 0;
+  height : 1px;
+  width: 70%;
+
+  @include rem(margin, 40px auto);
+}
+
+blockquote {
+  position: relative;
+
+  quotes: "\201C""\201D""\2018""\2019";
+
+  @include rem(padding-left, 40px);
+  @include rem(margin, 40px);
+
+  &:before {
+    position: absolute;
+    left: 0;
+    content: open-quote;
+    line-height: 1;
+    color: $grey-light;
+
+    @include font-size(64px);
+  }
+
+  .source {
+    text-align: right;
+
+    @include font-size(18px);
+  }
+}
+
+code, kbd, pre, samp {
+  background: $grey-lighter;
+  font-family: $code-font;
+  font-style: normal;
+  font-weight: 400;
+
+  @include font-size(18px);
+  @include rem(padding, 0 3px);
+}
+
+.pre {
+  background: $grey-lighter;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow-x: auto;
+
+  code {
+    display: block;
+
+    @include font-size(16px);
+    @include rem(padding, 12px 18px);
+  }
+}
+
+// ------------------------------------------------------------------
+//   Standard Content Typography
+// ------------------------------------------------------------------
+
+.content {
+
+  a {
+    color: $link-colour;
+    text-decoration: none;
+    border-bottom: 1px solid tint($base-colour, 30%);
+    transition: border-bottom 0.2s ease-out;
+
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  p {
+    @include rem(margin, 0 0 30px);
+  }
+}
+
+
+// ------------------------------------------------------------------
+//   Language Codes
+// ------------------------------------------------------------------
+
+:lang(ja) {
+  font-size: 90%;
+  font-family: 'MS Gothic', 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+
+:lang(zh-Hant) {
+  font-size: 90%;
+  font-family: helvetica, arial;
+}
+
+
+// ------------------------------------------------------------------
+//   Clearfix
+//   @link: http://nicolasgallagher.com/micro-clearfix-hack/
+// ------------------------------------------------------------------
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+// ------------------------------------------------------------------
+// Call-to-action button
+// ------------------------------------------------------------------
+
+.btn {
+  background: transparent;
+  border: 2px solid $base-colour;
+  border-radius: 3px;
+  display: block;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0 auto;
+  text-align: center;
+
+  @include font-size(18px);
+  @include rem(padding, 10px 15px 12px);
+  @include rem(max-width, 220px);
+  @include mq(tablet-land) {
+    margin: 0;
+    @include font-size(21px);
+  }
+
+  &:hover{
+    background: $base-colour;
+    color: #fff;
+    border: 2px solid $base-colour;
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Header
+// ------------------------------------------------------------------
+
+.site-header {
+  @extend .cf;
+
+  @include rem(margin-bottom, 20px);
+}
+
+.logo {
+  margin-top: 5px;
+  position: relative;
+  z-index: 100;
+  float: left;
+  color: $base-colour;
+}
+
+.high-contrast { // High contrast logo style
+
+  .logo {
+    color: #fff;
+
+    &.is-open {
+      color: $base-colour;
+    }
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Browsehappy
+// ------------------------------------------------------------------
+
+.browsehappy {
+  padding: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+// ------------------------------------------------------------------
+// Navigation
+// ------------------------------------------------------------------
+
+.navicon {
+  position: relative;
+  float: right;
+  cursor: pointer;
+  z-index: 100;
+
+  &.is-open {
+
+    .line {
+      background: transparent;
+    }
+
+    .lines:before,
+    .lines:after {
+      @include line();
+    }
+
+    .navi-label {
+      color: transparent;
+      transition: all $duration;
+    }
+  }
+}
+
+.navi-label {
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  font-family: $header-font;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  @include font-size(13px);
+  @include rem(margin-right, 3px);
+}
+
+// No JavaScript fallback
+.no-js .navicon {
+  display: none;
+}
+
+.lines {
+  position: relative;
+
+  @include line;
+
+  &:before,
+  &:after {
+    position: absolute;
+    left: 0;
+    content: '';
+    transform-origin: 50% 50%;
+
+    @include line;
+  }
+
+  &:before {
+    top: 9px;
+  }
+
+  &:after {
+    top: -9px;
+  }
+}
+
+.high-contrast { // High contrast navicon style
+
+  .navi-label {
+    color: #fff;
+  }
+
+  .lines,
+  .lines:before,
+  .lines:after {
+    @include line(yes);
+  }
+}
+
+.close {
+
+  .lines {
+    background: transparent;
+
+    &:before,
+    &:after {
+      transform-origin: 50% 50%;
+      top: 0;
+    }
+
+    &:before {
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+
+    &:after {
+      transform: rotate3d(0, 0, 1, -45deg);
+    }
+  }
+}
+
+.site-navi {
+  display: none;
+  font-family: $header-font;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.js .site-navi {
+  @extend .cf;
+
+  display: block;
+
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  left: 0;
+  background: #fff;
+  transition: all $duration;
+  z-index: 50;
+
+  &.is-open {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: all $duration;
+  }
+
+  nav {
+    @extend .l-vertical-centered;
+
+    width:  100% !important;
+  }
+
+  ul {
+    width:  100%;
+    text-align: center;
+
+    a {
+      display: block;
+      position: relative;
+      left: 0;
+      color: $base-colour;
+      text-decoration: none;
+      width: 100%;
+      transition: all $duration ease;
+
+      @include font-size(50px);
+      @include rem(padding, 8px 0);
+
+      &:hover,
+      &:focus {
+        left: 10px;
+        transition: all $duration ease;
+      }
+    }
+
+    li.is-current a {
+      text-decoration: underline;
+    }
+
+    @include no-bullets;
+  }
+}
+
+// No JavaScript fallback
+.no-js {
+
+  .logo {
+    @include font-size(22px);
+  }
+
+  .site-navi {
+    display: block;
+    float: right;
+
+    ul {
+      text-align: right;
+
+      @include no-bullets;
+    }
+
+    li {
+      display: inline;
+      margin: 0 4px 0 0;
+    }
+
+    a {
+      color: $base-colour;
+      text-decoration: none;
+
+      @include rem(padding, 0 20px);
+      @include font-size(22px);
+    }
+  }
+
+  .high-contrast a {
+    color: #fff;
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Pagination
+// ------------------------------------------------------------------
+.pagination ul {
+  text-align: center;
+  padding: 0;
+
+  @include rem(margin, 0 0 40px 0);
+
+  li {
+    display: inline;
+  }
+
+  a {
+    color: $link-colour;
+    font-family: $header-font;
+
+    @include font-size(18px);
+    @include rem(padding, 10px 20px);
+  }
+
+  // Icon
+  .pagination-icon {
+    color: $grey-light;
+    transition: color $duration;
+  }
+
+  a:hover .pagination-icon {
+    color: $grey;
+    transition: color $duration;
+  }
+
+}
+
+
+// ------------------------------------------------------------------
+// Layout
+// ------------------------------------------------------------------
+
+// Wrapper
+.l-wrapper {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+// Fixed background
+.l-fixed-bg {
+  border-bottom: 1px solid transparent;
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  // Only apply scrolling over effect on desktop, not working well on mobile and tablets
+  @include mq(wide-screen) {
+    background-attachment: fixed;
+  }
+}
+
+// Vertical aligned
+.l-vertical-centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translateX(-50%) translateY(-50%);
+  width: 90%;
+  margin: 0 !important;
+}
+
+
+// Grid
+.l-row {
+  @extend .cf;
+}
+
+.l-col-1-2 {
+
+  @include mq(tablet-land) {
+    float: left;
+    width: 50%;
+  }
+}
+
+.l-col-3-5 {
+
+  @include mq(tablet-land) {
+    float: left;
+    width: 70.3%;
+  }
+}
+
+.l-col-2-5 {
+
+  @include mq(tablet-land) {
+    float: left;
+    width: 29.7%;
+  }
+}
+
+.l-col-1-3 {
+
+  @include mq(tablet-land) {
+    float: left;
+    width: 33.333%;
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Blocks
+// ------------------------------------------------------------------
+
+main {
+  @include rem(margin-bottom, 120px);
+
+  section {
+    @include rem(padding-top, 40px);
+
+    &.reverse {
+      background: $grey-lighter;
+    }
+  }
+}
+
+[class^='b-'] {
+  @include rem(margin-bottom, 40px);
+  @include mq(wide-screen) {
+    @include rem(margin-bottom, 80px);
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.b-text {
+  margin-left: auto;
+  margin-right: auto;
+
+  @include rem(max-width, 700px);
+}
+
+.b-photoset {
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.bg-taiwan-2014-1 {
+  background-image: url('../img/bg-taiwan-2014-1-small.jpg');
+
+  @include mq(tablet-port) {
+    background-image: url('../img/bg-taiwan-2014-1.jpg');
+  }
+}
+
+.bg-taiwan-2014-2 {
+  background-image: url('../img/bg-taiwan-2014-2-small.jpg');
+
+  @include mq(tablet-port) {
+    background-image: url('../img/bg-taiwan-2014-2.jpg');
+  }
+}
+
+.bg-about {
+  background-image: url('../img/bg-about-small.jpg');
+
+  @include mq(tablet-port) {
+    background-image: url('../img/bg-about.jpg');
+  }
+}
+
+.bg-home {
+  background-image: url('../img/bg-home-small.jpg');
+
+  @include mq(tablet-port) {
+    background-image: url('../img/bg-home.jpg');
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Intro Text
+// ------------------------------------------------------------------
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wf-active .animate .l-fixed-bg .intro-text {
+  animation: fade-in ease-in 1;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-duration: 0.7s;
+}
+
+.l-fixed-bg .intro-text {
+  opacity: 0;
+}
+
+.intro-text {
+  @extend .container;
+
+  color: $base-colour;
+  text-align: center;
+  padding: 0;
+
+  @include rem(margin, 70px auto 40px auto);
+  @include rem(max-width, 700px);
+
+  h1 {
+    text-align: center;
+    margin-top: 0;
+
+    span {
+      display: block;
+    }
+  }
+
+  p {
+    @include rem(margin, 0 10px);
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.high-contrast .intro-text {
+  color: #fff;
+}
+
+
+// ------------------------------------------------------------------
+// Homepage
+// ------------------------------------------------------------------
+.page-home {
+
+  .intro-text {
+
+    h1 {
+
+      @include mq(tablet-small) {
+        text-align: left;
+
+        @include font-size(72px);
+      }
+
+      @include mq(tablet-land) {
+
+        @include font-size(102px);
+      }
+    }
+
+    p {
+
+      @include mq(tablet-small) {
+        text-align: left;
+
+        @include font-size(25px);
+      }
+    }
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Blog post
+// ------------------------------------------------------------------
+
+.post__date {
+  font-family: $header-font;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  @include font-size(14px);
+}
+
+.post-list {
+
+  @include rem(margin-bottom, 40px);
+
+  .post-list__title {
+    @extend .h3;
+
+    @include rem(margin-bottom, 15px);
+  }
+
+  .post__date {
+    color: $grey;
+
+    @include font-size(16px);
+    @include rem(margin, 0 0 10px 0);
+  }
+
+  a {
+    color: $link-colour;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    left: 0;
+    opacity: 1;
+    transition: all $duration ease;
+
+    &:hover {
+      opacity: 0.8;
+      left: 10px;
+      transition: all $duration ease;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Lazy load image
+// ------------------------------------------------------------------
+
+figure {
+  background: $grey-light url('../img/loader.svg') no-repeat 50% 50%;
+
+  @include rem(min-height, 160px);
+
+  &.img-standard {
+    margin: 0 auto;
+
+    @include rem(max-width, 700px);
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Share button
+// ------------------------------------------------------------------
+.share-action {
+  text-align: center;
+  display: inline-block;
+  color: $link-colour;
+
+  @include rem(margin-right, 10px);
+}
+
+.js.svg .share-action {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid $grey-light;
+  transition: border $duration ease-out;
+
+  @include hide-text;
+
+  &.icon-facebook {
+    background: url('../img/icons/facebook.svg') no-repeat 50% 50%;
+  }
+
+  &.icon-twitter {
+    background: url('../img/icons/twitter.svg') no-repeat 50% 50%;
+  }
+
+  &.icon-google-plus {
+    background: url('../img/icons/google-plus.svg') no-repeat 50% 50%;
+  }
+
+  &:hover {
+    border: 4px solid $base-colour;
+    transition: border 0.1s;
+  }
+}
+
+// ------------------------------------------------------------------
+// Australia Map
+// ------------------------------------------------------------------
+
+.australia-map {
+  display: none;
+}
+
+.js.svg .australia-map {
+  display: block;
+  position: relative;
+  width: 220px;
+  height: 209px;
+  background: url('../img/australia-map.svg') no-repeat 0 0;
+
+  @include rem(margin, 0 auto 30px auto);
+
+  .perth-city,
+  .perth-city-beacon {
+    position: absolute;
+    bottom: 75px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    background: #ffaa00;
+    border-radius: 50%;
+
+    @include hide-text;
+  }
+
+  .perth-city {
+    z-index: 20;
+    border: 2px solid #fff;
+  }
+
+  .perth-city-beacon {
+    z-index: 10;
+    animation: show-perth 1.5s infinite;
+  }
+
+  @keyframes show-perth {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+}
+
+
+// ------------------------------------------------------------------
+// Footer
+// ------------------------------------------------------------------
+
+.site-footer {
+  @extend .cf;
+
+  background: #383838;
+  color: #9b9b9b;
+  font-family: $header-font;
+  line-height: 1.5;
+  text-align: center;
+  transition: background $duration ease-out;
+
+  @include font-size(16px);
+  @include rem(padding, 80px 0);
+
+  a {
+    color: #9b9b9b;
+    text-decoration: none;
+
+    &:hover {
+      color: #fff;
+      transition: color $duration;
+    }
+  }
+}
+
+.footer-links a {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  transition: opacity $duration ease;
+
+  @include rem(margin-right, 20px);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    opacity: 1;
+    transition: opacity $duration ease;
+  }
+}

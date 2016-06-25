@@ -1,0 +1,9 @@
+// Tints (add percentage of white to a color)
+@function tint($colour, $percent){
+  @return mix(white, $colour, $percent);
+}
+
+// Tones (add percentage of black to a color)
+@function shade($colour, $percent){
+  @return mix(black, $colour, $percent);
+}
