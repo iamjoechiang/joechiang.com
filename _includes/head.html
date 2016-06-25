@@ -1,0 +1,47 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+
+  <title>{% if page.title %}{{ page.title }} | joechiang.com.au{% else %}{{ site.title }}{% endif %}</title>
+
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.keywords }}{% endif %}">
+  <meta name="author" content="Joe Chiang">
+  <meta name="robots" content="index, follow">
+
+  <meta itemprop="name" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta itemprop="description" content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
+  <meta itemprop="image" content="{{ "/assets/img/og/" | prepend: site.url }}{% if page.og-image %}{{ page.og-image }}{% else %}{{ site.og-image }}{% endif %}.jpg">
+
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <meta property="og:image" content="{{ "/assets/img/og/" | prepend: site.url }}{% if page.og-image %}{{ page.og-image }}{% else %}{{ site.og-image }}{% endif %}.jpg">
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="zh_TW">
+  <meta property="og:locale:alternate" content="ja_JP">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@{{ site.socialmedia_username }}">
+  <meta name="twitter:creator" content="@{{ site.socialmedia_username }}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:image:src" content="{{ "/assets/img/og/" | prepend: site.url }}{% if page.og-image %}{{ page.og-image }}{% else %}{{ site.og-image }}{% endif %}.jpg">
+
+  <link rel="stylesheet" href="{{ "/assets/css/style.min.css?v=20150725" | prepend: site.baseurl }}">
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <link rel="dns-prefetch" href="//ajax.googleapis.com">
+  <link rel="dns-prefetch" href="//use.typekit.com">
+
+  <script async src="{{ "/assets/js/modernizr.js" | prepend: site.baseurl }}"></script>
+  <script src="//use.typekit.net/cat4jal.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+</head>
