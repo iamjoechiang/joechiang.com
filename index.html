@@ -1,0 +1,41 @@
+---
+layout:      default
+permalink:   /
+h1:          UI/UX <span>Developer</span>
+intro-text:  I am Joe Chiang, a Perth based web designer &amp; coder, who crafts creative customised user-friendly, accessible websites.
+site-title:  false
+fixed-bg:    true
+bg_class:    bg-home
+body-class:  page-home
+---
+
+      <section class="reverse">
+        <div class="container">
+          <div class="b-text">
+            <h2 class="site-title">What I do</h2>
+            <h3>Design</h3>
+            <p>I create beautiful, accessible websites that engage your target audience, add value to your business and are easy to use. As most website traffic comes via a mobile device, I specialise in <strong>Responsive Web Design</strong> and have a &lsquo;<strong>Mobile First</strong>&rsquo; approach that ensures your website looks great and loads fast on a variety of devices at all resolutions.</p>
+
+            <h3>Development</h3>
+            <p>I use open source based content management systems  including WordPress, Craft and Siteleaf to develop and build websites with the latest web standards such as <strong>HTML5</strong>, <strong>CSS3</strong> and <strong>JavaScript</strong>. Features and software depend on the size, scale and budget of your website or project.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div class="b-text">
+            <h2 class="site-title">Recent Posts</h2>
+            {% for post in site.posts limit:3 %}
+              <article class="post-list" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <a href="{{ post.url }}" class="content">
+                  <header>
+                    <h3 class="post-list__title" itemprop="name">{{ post.title }}</h3>
+                    <p class="post__date"><time itemprop="dateCreated" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%-d %b, %Y" }}</time></p>
+                  </header>
+                  {{ post.excerpt }}
+                </a>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
