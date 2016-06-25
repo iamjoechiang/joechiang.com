@@ -1,17 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta name="generator" content="Siteleaf, http://siteleaf.com" />
-  <title>{{page.title}} | {{site.title}}</title>
-  <link rel="canonical" href="{{permalink}}" />
-  <link rel="alternate" type="application/rss+xml" href="{{site.feed_url}}" />
-  <link rel="stylesheet" type="text/css" href="/assets/styles/global.css" />
-</head>
-<body>
-  {{ page.title }}
-  {{ content }}
-  {{ page.footer_scripts }}
-</body>
+<html lang="en-AU" class="no-js">
+
+  {% include head.html %}
+
+  <body{% if page.body-class %} class="{{ page.body-class }}"{% endif %}>
+
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="l-wrapper">
+
+      <section class="{% if page.fixed-bg == true %}l-fixed-bg{% endif %} {{ page.bg_class }}">
+
+        {% include header.html %}
+
+        <div class="intro-text content{% if page.fixed-bg == true %} l-vertical-centered{% endif %}{% if page.id %} single-post{% endif %}">
+          <h1{% if page.site-title == true %} class="site-title"{% endif %}>{{ page.h1 }}</h1>
+          {% if page.intro-text %} <p>{{ page.intro-text }}</p>{% endif %}
+          {% if page.id %}
+            <p class="post__date"><time itemprop="dateCreated" datetime="{{ page.date | date: "%F" }}">{{ page.date | date: "%-d %B, %Y" }}</time></p>
+          {% endif %}
+        </div>
+
+      </section>
+
+      <main role="main">
+
+        {{ content }}
+
+        {% if page.id %}
+          <div class="container">
+            <div class="b-text centre">
+              <h4 class="centre">Share this article</h4>
+              <a class="share-action icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url | cgi_escape }}" title="Share on Facebook">Facebook</a>
+              <a class="share-action icon-twitter" href="https://twitter.com/share?url={{ page.url | prepend: site.url | cgi_escape }}&amp;text={{ page.title | cgi_escape }}" title="Share on Twitter">Twitter</a>
+              <a class="share-action icon-google-plus" href="https://plus.google.com/share?url={{ page.url | prepend: site.url | cgi_escape }}" title="Share on Google+">Google+</a>
+            </div>
+          </div>
+        {% endif %}
+
+      </main>
+
+      {% if page.id %}
+        <hr>
+        <nav class="pagination">
+          <ul>
+            {% if page.previous.url %}
+            <li class="pagination-prev">
+              <a href="{{ page.previous.url | prepend: site.baseurl }}" title="Previous article: {{page.previous.title}}"><span class="pagination-icon">&#8592;</span> Previous</a>
+            </li>
+            {% endif %}
+            <li class="pagination-top">
+              <a href="/journal/"><span class="pagination-icon">&#8593;</span> Back to Journal</a>
+            </li>
+            {% if page.next.url %}
+            <li class="pagination-next">
+              <a href="{{ page.next.url | prepend: site.baseurl }}" title="Next article: {{page.next.title}}">Next <span class="pagination-icon">&#8594;</span></a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      {% include footer.html %}
+
+  </body>
 </html>
