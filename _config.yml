@@ -1,35 +1,37 @@
-# Site settings
+---
 title: Joe Chiang - UX / UI Designer and Front-End Developer in Perth
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
 email: hello@joechiang.com.au
-description: > # this means to ignore newlines until "baseurl:"
+description: |
   This is an online portfolio of Joe Chiang, who crafts user-friendly websites from Perth, Western Australia.
-baseurl: ""
-url: "http://joechiang.com.au"
-keywords: "responsive design, shopify developer, wordpress developer, web development, wordpress consultation, html coding, css development, wordpress customization, perth wordpress developer, mobile apps"
+baseurl: ''
+url: http://joechiang.com.au
+keywords: responsive design, shopify developer, wordpress developer, web development,
+  wordpress consultation, html coding, css development, wordpress customization, perth
+  wordpress developer, mobile apps
 socialmedia_username: iamjoechiang
 og-image: joechiang
-
-# Build settings
 markdown: kramdown
-
-# Outputting
-permalink:     /:title/
-paginate:      3
-paginate_path: "journal/page:num"
-timezone:      null
-
-# Exclude files
-exclude: [
-  .git,
-  .gitignore,
-  .DS_Store,
-  CNAME,
-  bower.json,
-  scss,
-  .sass-cache,
-  package.json,
-  Gruntfile.js,
-  node_modules,
-  readme.md,
-  src
-]
+permalink: "/:title/"
+paginate: 3
+paginate_path: journal/page:num
+exclude:
+- ".git"
+- ".gitignore"
+- ".DS_Store"
+- CNAME
+- bower.json
+- scss
+- ".sass-cache"
+- package.json
+- Gruntfile.js
+- node_modules
+- readme.md
+- src
