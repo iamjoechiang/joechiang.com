@@ -1,0 +1,34 @@
+---
+layout:      default
+title:       MAMP Pro 2 Apache does not start on OS X Yosemite
+h1:          MAMP Pro Apache won't start on OS X Yosemite
+date:        2014-10-25
+excerpt:     This is a quick tip to show you how to fix MAMP Pro 2, Apache on OS X Yosemite.
+intro-text:
+site-title:  false
+fixed-bg:    false
+bg_class:
+assets-path: /assets/img/mamp-pro/
+og-image:    mamp-yosemite
+---
+
+      <section>
+        <div class="container">
+          <div class="b-photoset">
+            <figure class="img-standard">
+              <img class="lasy-loading" data-src="{{ page.assets-path }}mamp-pro.jpg" data-src-small="{{ page.assets-path }}mamp-pro-small.jpg" alt="{{ page.title }}">
+              <noscript><img src="{{ page.assets-path }}mamp-pro-small.jpg" alt="{{ page.title }}"></noscript>
+            </figure>
+          </div>
+          <div class="b-text">
+            <p>I recently upgraded my MacBook Pro to OS X Yosemite and MAMP Pro (I'm running version 2.1.4) &ndash; Apache won't start after the upgrade.</p>
+            <p>Here is a quick fix.</p>
+            <ol>
+              <li>Navigate to <code>/Applications/MAMP/bin/apache2/bin</code> in your Finder</li>
+              <li>Rename the file <code>envvars</code> to <code>_envvars</code></li>
+              <li>Start MAMP Pro</li>
+            </ol>
+            <p>Done!</p>
+          </div>
+        </div>
+      </section>

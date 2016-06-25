@@ -1,0 +1,47 @@
+---
+layout:      default
+title:       Add WordPress Multisite Network Admin via Database
+h1:          Add WordPress Multisite Network Admin via Database
+date:        2015-05-31
+excerpt:     A quick guide to add a WordPress Multisite Network Admin via Database
+keywords:    "wordpress multisite network admin database db user grant add phpmyadmin super"
+intro-text:
+site-title:  false
+fixed-bg:    false
+og-image:    wordpress-network-admin-db
+---
+
+      <section class="content">
+        <div class="container">
+          <div class="b-text">
+            <p>Recently, I needed to add a Network Admin (Super Admin) to the WordPress Multisite via Database and here is a quick article to show you how I did it with phpMyAdmin.</p>
+            <p>In this example, we add an existing user - <em>Josh</em> as a new Network Admin.</p>
+            <ol>
+              <li>Go to table  <code>wp_sitemeta</code></li>
+              <li>Search for a meta_key called  <code>site_admins</code></li>
+              <li>The value will look like the following syntax:<br>
+                <div class="pre">
+                  <code>a:3:{i:0;s:5:"admin";i:1;s:3:"tim";i:2;s:4:"cory";}</code>
+                </div>
+                <dl>
+                  <dt>a:3</dt>
+                  <dd>This matches how many Network Admins you have. So, for 3 admins you'd put 3.</dd>
+                  <dt>i:0, i:1, i:2</dt>
+                  <dd>This is the user order: Admin1, Admin2, Admin3, etc.</dd>
+                  <dt>s:5, s:3, s4</dt>
+                  <dd>This matches how many characters are in the username.</dd>
+                  <dt>admin, tim, cory</dt>
+                  <dd>This is the declared username that will be associated with the Network Admins. Please note that this is case-sensitive.</dd>
+                </dl>
+              </li>
+              <li>Based on the above syntax, the updated value will be:<br>
+                <div class="pre">
+                  <code>a:4:{i:0;s:5:"admin";i:1;s:3:"time";i:2;s:4:"cory";i:3;s:4:"josh"}</code>
+                </div>
+              </li>
+              <li>Save the value</li>
+            </ol>
+            <p>You now grant <em>Josh</em> Network Admin privileges on your WordPress Multisite Network.</p>
+          </div>
+        </div>
+      </section>
