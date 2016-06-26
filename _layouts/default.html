@@ -29,6 +29,16 @@
 
         {{ content }}
 
+        {% for text in page.b-text %}
+          <section class="content">
+            <div class="container">
+              <div class="b-text">
+                {{ text }}
+              </div>
+            </div>
+          </section>
+        {% endfor %}
+
         {% if page.id %}
           <div class="container">
             <div class="b-text centre">
