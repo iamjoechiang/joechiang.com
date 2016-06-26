@@ -1,0 +1,28 @@
+---
+layout:      default
+permalink:   /journal/
+title:       The Journal - I write about Web Design and Development
+h1:          Journal
+excerpt:     Notes and tutoirals about Web Design and Development
+intro-text:  Tutorials, Tips and Photography
+site-title:  true
+fixed-bg:    false
+bg_class:
+---
+<section>
+  <div class="container">
+    <div class="b-text">
+      {% for post in site.posts %}
+        <article class="post-list" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+          <a href="{{ post.url }}" class="content">
+            <header>
+              <h2 class="post-list__title" itemprop="name">{{ post.title }}</h2>
+              <p class="post__date"><time itemprop="dateCreated" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%-d %b, %Y" }}</time></p>
+            </header>
+            {{ post.excerpt }}
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
