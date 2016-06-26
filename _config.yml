@@ -11,7 +11,7 @@ collections:
 email: hello@joechiang.com.au
 description: |
   This is an online portfolio of Joe Chiang, who crafts user-friendly websites from Perth, Western Australia.
-baseurl: 
+baseurl:
 url: http://joechiang.com
 keywords: responsive design, shopify developer, wordpress developer, web development,
   wordpress consultation, html coding, css development, wordpress customization, perth
@@ -22,13 +22,14 @@ markdown: kramdown
 permalink: "/:title/"
 paginate: 3
 paginate_path: journal/page:num
+sass:
+  sass_dir: _sass
 exclude:
 - ".git"
 - ".gitignore"
 - ".DS_Store"
 - CNAME
 - bower.json
-- scss
 - ".sass-cache"
 - package.json
 - Gruntfile.js
