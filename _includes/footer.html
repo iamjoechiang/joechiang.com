@@ -1,26 +1,18 @@
       <footer role="contentinfo" class="site-footer">
         <div class="container">
           <div class="footer-links" itemscope itemtype="http://schema.org/Organization">
-            <link itemprop="url" href="http://joechiang.com.au">
-            <a href="https://twitter.com/{{ site.socialmedia_username }}" title="Follow me on Twitter" itemprop="sameAs">
-              <svg viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="icon-twitter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <path d="M32,3.079 C30.823,3.601 29.557,3.954 28.229,4.113 C29.585,3.3 30.626,2.013 31.116,0.481 C29.847,1.233 28.442,1.779 26.947,2.074 C25.75,0.798 24.043,0 22.155,0 C18.529,0 15.59,2.94 15.59,6.565 C15.59,7.08 15.647,7.581 15.76,8.062 C10.303,7.787 5.466,5.174 2.228,1.202 C1.662,2.172 1.339,3.3 1.339,4.503 C1.339,6.781 2.498,8.79 4.259,9.967 C3.183,9.933 2.171,9.638 1.286,9.146 L1.285,9.228 C1.285,12.409 3.548,15.063 6.552,15.666 C6.001,15.816 5.421,15.896 4.822,15.896 C4.399,15.896 3.988,15.855 3.587,15.779 C4.422,18.387 6.847,20.285 9.72,20.338 C7.472,22.098 4.642,23.148 1.566,23.148 C1.036,23.148 0.513,23.117 0,23.056 C2.905,24.919 6.356,26.006 10.063,26.006 C22.139,26.006 28.743,16.002 28.743,7.326 C28.743,7.042 28.737,6.759 28.724,6.477 C30.007,5.552 31.12,4.395 32,3.079" id="twitter" fill="#FFFFFF"></path>
-                </g>
-              </svg>
-            </a>
-            <a href="https://instagram.com/{{ site.socialmedia_username }}" title="Follow me on Instagram" itemprop="sameAs">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <g id="icon-instagram" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <path d="M28,8 C28,9.104 27.106,10 26,10 L24,10 C22.896,10 22,9.104 22,8 L22,6 C22,4.897 22.896,4 24,4 L26,4 C27.106,4 28,4.897 28,6 L28,8 L28,8 Z M28,26 C28,27.106 27.106,28 26,28 L6,28 C4.894,28 4,27.106 4,26 L4,16 C4,14.895 4.894,14 6,14 L8.284,14 C8.116,14.643 8,15.305 8,16 C8,20.418 11.582,24 16,24 C20.418,24 24,20.418 24,16 C24,15.305 23.882,14.643 23.716,14 L26,14 C27.106,14 28,14.895 28,16 L28,26 L28,26 Z M16,12 C19.684,12 20,16 20,16 C20,16 20.118,20 16,20 C11.884,20 12,16 12,16 C12,16 12.316,12 16,12 L16,12 Z M28,0 L4,0 C1.792,0 0,1.792 0,4 L0,28 C0,30.208 1.792,32 4,32 L28,32 C30.208,32 32,30.208 32,28 L32,4 C32,1.792 30.208,0 28,0 L28,0 Z" id="instagram" fill="#FFFFFF"></path>
-                </g>
-              </svg>
-            </a>
+            <link itemprop="url" href="http://joechiang.com">
+            <a href="https://twitter.com/{{ site.socialmedia_username }}" title="Follow me on Twitter" itemprop="sameAs">Twitter</a>
+            <a href="https://instagram.com/{{ site.socialmedia_username }}" title="Follow me on Instagram" itemprop="sameAs">Instagram</a>
           </div>
-          <p>&copy; 2016 Joe Chiang. All rights reserved. Handcrafted in Perth.</p>
+          <p>&copy; 2016 Joe Chiang.</p>
         </div>
       </footer>
     </div>
+    <script src="//cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
+    <script>
+
+    </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -30,7 +22,7 @@
       ga('create', 'UA-50132995-1', 'auto');
       ga('send', 'pageview');
     </script>
-    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
     <script src="{{ "/assets/js/script.js" | prepend: site.baseurl }}"></script>
     {% if page.custom-js %}
       {% for js_file in page.custom-js %}
