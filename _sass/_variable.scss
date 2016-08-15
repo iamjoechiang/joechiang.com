@@ -10,18 +10,18 @@ $mq-break-points: (
   (tablet-small 600px)
   (tablet-port  768px)
   (tablet-land  960px)
-  (wide-screen  1200px)
+  (wide-screen  1400px)
 ) !default;
 
 $old-ie:                false !default; // Old IE is disabled as default
 $old-ie-break-point:    wide-screen; // Set wide screen width for old IEs break point
 
-$base-colour: #464646;
+$base-colour: #787878;
 $bg-colour: #d3d3d1;
 
-$base-font:   'adobe-garamond-pro', serif;
-$header-font: 'brandon-grotesque', sans-serif;
-$code-font:   'source-code-pro', sans-serif;
+$base-font:   'niveau-grotesk', 'sans-serif';
+$header-font: 'niveau-grotesk', 'sans-serif';
+$code-font:   'niveau-grotesk', 'sans-serif';
 
 $base-font-size: 18px;
 
@@ -37,3 +37,5 @@ $grey-dark: #222;
 
 $border-width: 20px;
 $border-colour: #ddd;
+
+$header-colour: #222;
