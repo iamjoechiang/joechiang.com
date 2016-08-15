@@ -11,9 +11,9 @@
 
     <div class="l-wrapper">
 
-      <section class="{% if page.fixed-bg == true %}l-fixed-bg{% endif %} {{ page.bg_class }}">
+      {% include header.html %}
 
-        {% include header.html %}
+      <section class="{% if page.fixed-bg == true %}l-fixed-bg{% endif %} {{ page.bg_class }}">
 
         <div class="intro-text content{% if page.fixed-bg == true %} l-vertical-centered{% endif %}{% if page.id %} single-post{% endif %}">
           <h1{% if page.site-title == true %} class="site-title"{% endif %}>{{ page.h1 }}</h1>
@@ -42,10 +42,10 @@
         {% if page.id %}
           <div class="container">
             <div class="b-text centre">
-              <h4 class="centre">Share this article</h4>
-              <a class="share-action icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url | cgi_escape }}" title="Share on Facebook">Facebook</a>
-              <a class="share-action icon-twitter" href="https://twitter.com/share?url={{ page.url | prepend: site.url | cgi_escape }}&amp;text={{ page.title | cgi_escape }}" title="Share on Twitter">Twitter</a>
-              <a class="share-action icon-google-plus" href="https://plus.google.com/share?url={{ page.url | prepend: site.url | cgi_escape }}" title="Share on Google+">Google+</a>
+              <p class="centre"><strong>Share this article</strong></p>
+              <a class="share-action" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url | cgi_escape }}" title="Share on Facebook">Facebook</a>
+              <a class="share-action" href="https://twitter.com/share?url={{ page.url | prepend: site.url | cgi_escape }}&amp;text={{ page.title | cgi_escape }}" title="Share on Twitter">Twitter</a>
+              <a class="share-action" href="https://plus.google.com/share?url={{ page.url | prepend: site.url | cgi_escape }}" title="Share on Google+">Google+</a>
             </div>
           </div>
         {% endif %}
