@@ -18,28 +18,18 @@
         <div class="intro-text content{% if page.fixed-bg == true %} l-vertical-centered{% endif %}{% if page.id %} single-post{% endif %}">
           <h1{% if page.site-title == true %} class="site-title"{% endif %}>{{ page.h1 }}</h1>
           {% if page.intro-text %} <p>{{ page.intro-text }}</p>{% endif %}
-          {% if page.id %}
+          {% if page.path contains '_posts' %}
             <p class="post__date"><time itemprop="dateCreated" datetime="{{ page.date | date: "%F" }}">{{ page.date | date: "%-d %B, %Y" }}</time></p>
           {% endif %}
         </div>
 
       </section>
 
-      <main role="main">
+      <main>
 
         {{ content }}
 
-        {% for text in page.b-text %}
-          <section class="content">
-            <div class="container">
-              <div class="b-text">
-                {{ text }}
-              </div>
-            </div>
-          </section>
-        {% endfor %}
-
-        {% if page.id %}
+        {% if page.path contains '_posts' %}
           <div class="container">
             <div class="b-text centre">
               <p class="centre"><strong>Share this article</strong></p>
@@ -52,7 +42,7 @@
 
       </main>
 
-      {% if page.id %}
+      {% if page.path contains '_posts' %}
         <hr>
         <nav class="pagination">
           <ul>
