@@ -3,19 +3,6 @@
   // Add .animate class on body once it's loaded
   $('body').addClass('animate');
 
-  // Add tracking on email button
-  $('.js-email').on('click', function() {
-    ga('send', 'event', 'button', 'click', 'email-navi-link');
-  });
-
-  // Navicon Toggle
-  $('.navicon').click(function(e) {
-    e.preventDefault();
-
-    $(this).toggleClass("close");
-    $('.site-navi, .logo, .navicon').toggleClass("is-open");
-  });
-
   // Share Button
   $('.share-action').click(function(e) {
     e.preventDefault();
