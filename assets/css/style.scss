@@ -13,9 +13,6 @@
 // Import mixin
 @import "mixin";
 
-// Import function
-@import "function";
-
 
 // ------------------------------------------------------------------
 // Default
@@ -127,7 +124,7 @@ h1,
   @include font-size(45px);
   @include rem(margin-bottom, 20px);
   @include mq(tablet-land) {
-    @include font-size(80px);
+    @include font-size(55px);
   }
 }
 
@@ -363,20 +360,18 @@ code, kbd, pre, samp {
   background-color: $grey-dark;
   border-radius: 3px;
   color: #fff;
-  display: block;
+  display: inline-block;
   font-weight: 400;
   line-height: 1;
   margin: 0 auto;
   text-align: center;
   transition: background-color $duration ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 
-  @include font-size(14px);
-  @include rem(padding, 10px 15px 12px);
+  @include font-size(13px);
+  @include rem(padding, 15px 20px);
   @include rem(max-width, 220px);
-  @include mq(tablet-land) {
-    margin: 0;
-    @include font-size(16px);
-  }
 
   &:hover{
     background-color: $grey;
@@ -391,7 +386,11 @@ code, kbd, pre, samp {
 .site-header {
   @extend .cf;
 
-/*
+  &:hover a {
+    color: $navi-colour;
+    transition: color $duration;
+  }
+
   @include mq(tablet-land) {
     position: fixed;
     width: 100%;
@@ -400,12 +399,13 @@ code, kbd, pre, samp {
     background-color: #fff;
     background-color: rgba(white, 0.7);
   }
-*/
 
+/*
   @include mq(wide-screen) {
     @include rem(padding-top, 20px);
     @include rem(padding-bottom, 20px);
   }
+*/
 }
 
 .logo {
@@ -435,17 +435,38 @@ code, kbd, pre, samp {
   a {
     display: inline-block;
     font-weight: 400;
-    color: lighten($base-colour, 30%);
+    color: lighten($navi-colour, 50%);
     text-decoration: none;
     text-transform: capitalize;
+    position: relative;
 
     @include font-size(16px);
     @include rem(margin, 0 20px 0 0);
 
-    &:hover,
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover::after,
+    &.current::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      border-bottom: 1px solid $navi-colour;
+      transform: translateY(-0.5em);
+      transition: transform $duration ease,opacity $duration ease;
+    }
+
     &.current {
-      color: $base-colour;
-      border-bottom: 1px solid $base-colour;
+      color: $navi-colour;
     }
 
     @include mq(tablet-land) {
@@ -462,6 +483,7 @@ code, kbd, pre, samp {
 // ------------------------------------------------------------------
 // Pagination
 // ------------------------------------------------------------------
+
 .pagination ul {
   text-align: center;
   padding: 0;
@@ -522,7 +544,11 @@ code, kbd, pre, samp {
   // Only apply scrolling over effect on desktop, not working well on mobile and tablets
   @include mq(wide-screen) {
     background-attachment: fixed;
-    background-position-y: 110px;
+    background-position-y: 70px;
+  }
+
+  h1 {
+    color: #fff;
   }
 
   .site-navi a,
@@ -616,11 +642,40 @@ main {
 }
 
 .b-photoset {
+  margin-left: auto;
+  margin-right: auto;
+
+  @include rem(max-width, 960px);
 
   img {
     display: block;
     width: 100%;
   }
+
+  figure {
+    position: relative;
+  }
+
+  a {
+    img {
+      transition: box-shadow $duration, transform $duration;
+    }
+
+    &:hover img {
+      z-index: 10;
+      box-shadow: 0 10px 14px rgba(0, 0, 0, 0.1);
+      transform: translate(0, -4px);
+    }
+  }
+
+/*
+  figure {
+    margin: 0 auto;
+    background-color: transparent;
+
+    @include rem(max-width, 900px);
+  }
+*/
 }
 
 .bg-taiwan-2014-1 {
@@ -689,6 +744,9 @@ main {
 
   @include rem(margin, 70px auto 40px auto);
   @include rem(max-width, 700px);
+  @include mq(tablet-land) {
+    @include rem(margin-top, 140px);
+  }
 
   h1 {
     text-align: center;
@@ -722,6 +780,7 @@ main {
   .intro-text {
 
     h1 {
+      color: $header-colour;
 
       @include mq(tablet-small) {
         text-align: left;
@@ -804,7 +863,7 @@ main {
 // ------------------------------------------------------------------
 
 figure {
-  background: $grey-light url('../img/loader.svg') no-repeat 50% 50%;
+  background: transparent url('../img/loader.svg') no-repeat 50% 50%;
 
   @include rem(min-height, 160px);
 
