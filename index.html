@@ -2,24 +2,37 @@
 permalink: "/"
 layout: default
 h1: UI/UX <span>Designer</span>
-intro-text: I am Joe Chiang, a Perth based Web Designer &amp; Coder, who crafts creative
+intro-text: I am Joe Chiang, a Perth based UX/UI Designer &amp; Coder, who crafts creative
   customised user-friendly, accessible websites.
 site-title: false
 fixed-bg: true
 bg_class: bg-home
 body-class: page-home
+custom-js:
+  - "/assets/js/layzr.min.js"
+  - "/assets/js/layzr.init.js"
 ---
 
       <section class="reverse">
         <div class="container">
-          <div class="b-text">
-            <h2 class="site-title">What I do</h2>
-            <h3>Design</h3>
-            <p>I create beautiful, accessible websites that engage your target audience, add value to your business and are easy to use. As most website traffic comes via a mobile device, I specialise in <strong>Responsive Web Design</strong> and have a &lsquo;<strong>Mobile First</strong>&rsquo; approach that ensures your website looks great and loads fast on a variety of devices at all resolutions.</p>
-
-            <h3>Development</h3>
-            <p>I use open source based content management systems  including WordPress, Craft and Siteleaf to develop and build websites with the latest web standards such as <strong>HTML5</strong>, <strong>CSS3</strong> and <strong>JavaScript</strong>. Features and software depend on the size, scale and budget of your website or project.</p>
-          </div>
+          {% for project in site.projects limit:1 %}
+            <div class="b-text">
+              <h2 class="site-title">{{ project.title }}</h2>
+              <p class="centre">{{ project.services }}</p>
+            </div>
+            <div class="b-photoset">
+              <div class="l-row">
+                <figure>
+                  <a href="{{ project.url }}">
+                    <img data-retina="{{ project.assets-path }}-preview@2x.png" data-normal="{{ project.assets-path }}-preview.png" alt="{{ project.title }}">
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="b-text">
+              <p class="centre"><a href="{{ project.url }}" class="button">View <span class="visually-hidden">the {{ project.title }}</span> Project</a></p>
+            </div>
+          {% endfor %}
         </div>
       </section>
       <section>
