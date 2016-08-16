@@ -108,7 +108,7 @@ h6,
   color: $header-colour;
   font-family: $header-font;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   text-align: left;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -135,7 +135,7 @@ h2,
 .h2 {
   line-height: 1.1875;
 
-  @include font-size(34px);
+  @include font-size(30px);
   @include rem(margin-bottom, 20px);
   @include mq(tablet-land) {
     @include font-size(50px);
@@ -316,6 +316,13 @@ code, kbd, pre, samp {
   }
 }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
 
 // ------------------------------------------------------------------
 //   Language Codes
@@ -352,28 +359,27 @@ code, kbd, pre, samp {
 // Call-to-action button
 // ------------------------------------------------------------------
 
-.btn {
-  background: transparent;
-  border: 2px solid $base-colour;
+.button {
+  background-color: $grey-dark;
   border-radius: 3px;
+  color: #fff;
   display: block;
   font-weight: 400;
   line-height: 1;
   margin: 0 auto;
   text-align: center;
+  transition: background-color $duration ease;
 
-  @include font-size(18px);
+  @include font-size(14px);
   @include rem(padding, 10px 15px 12px);
   @include rem(max-width, 220px);
   @include mq(tablet-land) {
     margin: 0;
-    @include font-size(21px);
+    @include font-size(16px);
   }
 
   &:hover{
-    background: $base-colour;
-    color: #fff;
-    border: 2px solid $base-colour;
+    background-color: $grey;
   }
 }
 
@@ -424,7 +430,7 @@ code, kbd, pre, samp {
 // ------------------------------------------------------------------
 
 .site-navi {
-  float: left;
+  text-align: center;
 
   a {
     display: inline-block;
@@ -674,10 +680,6 @@ main {
   opacity: 0;
 }
 
-.l-fixed-bg h1 {
-  color: #fff;
-}
-
 .intro-text {
   @extend .container;
 
@@ -889,7 +891,7 @@ figure {
 .site-footer {
   @extend .cf;
 
-  border-top: 1px solid $grey-light;
+  border-top: 1px solid $grey-lighter;
   line-height: 1.5;
 
   @include font-size(16px);
