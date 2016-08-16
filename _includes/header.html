@@ -1,10 +1,10 @@
         <header role="banner" class="site-header">
           <div class="container">
             <div class="site-navi">
-              <nav role="navigation">
-                <a href="/"{% if page.url == '/' %}class='current'{% endif %}>Work</a>
+              <nav>
+                <a href="/"{% if page.url == '/' or page.path contains '_projects' %}class='current'{% endif %}>Work</a>
                 <a href="/about/"{% if page.url == '/about/' %}class='current'{% endif %}>About</a>
-                <a href="/journal/"{% if page.url == '/journal/' %}class='current'{% endif %}>Journal</a>
+                <a href="/journal/"{% if page.url == '/journal/' or page.path contains '_posts' %}class='current'{% endif %}>Journal</a>
               </nav>
             </div>
           </div>
