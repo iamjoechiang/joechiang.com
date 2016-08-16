@@ -8,7 +8,11 @@ collections:
   uploads:
     title: Uploads
     output: true
-email: hello@joechiang.com.au
+  projects:
+    title: Projects
+    output: true
+    permalink: /project/:path/
+email: hey@joechiang.com
 description: |
   This is an online portfolio of Joe Chiang, who crafts user-friendly websites from Perth, Western Australia.
 baseurl:
